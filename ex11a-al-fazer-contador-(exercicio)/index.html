@@ -50,17 +50,44 @@
 
   <!-- Script JavaScript embutido na página -->
   <script>
-    const iniciar = document.querySelector("startButton");
-    let timer = 0
+    const iniciar = document.querySelector("#startButton");
+    const pausar = document.querySelector("#pauseButton");
+    const reset = document.querySelector("#resetButton");
+    const timer = document.querySelector("#timer");
 
-    iniciar.addEventListener('click', () => {
+    let tempo = 0
+    let intervalo = null
 
-      .then(timer = 1);
+    iniciar.addEventListener("click", function () {
+      if (intervalo === null) {
+        intervalo = setInterval(function () {
+        tempo++
+        timer.textContent = tempo
+        }, 1000)
+      }
+    })
+
+    pausar.addEventListener("click", function(){
+      if (tempo === tempo){
+        clearInterval(intervalo);
+      }
+    })
+
+    reset.addEventListener("click", function(){
+      if (tempo === tempo){
+        clearInterval(intervalo)
+        intervalo = null
+        tempo = 0
+        timer.textContent = tempo
+      }
+    })
 
 
 
 
-    });
+
+  
+      
    
 
 
